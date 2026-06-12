@@ -104,6 +104,39 @@
       text-decoration: none;
     }
 
+    .work-sample { margin-bottom: 32px; }
+
+    .work-sample h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .work-sample p {
+      font-size: 0.9rem;
+      color: var(--mid);
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+
+    .embed-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 73.83%;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--card);
+    }
+
+    .embed-wrapper iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+
     main {
       max-width: var(--max);
       margin: 0 auto;
@@ -265,6 +298,7 @@
 <nav>
   <ul>
     <li><a href="#highlights">Highlights</a></li>
+    <li><a href="#work">Work</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#tools">Tools</a></li>
@@ -299,6 +333,21 @@
       <div class="highlight-card">
         <div class="number">6</div>
         <div class="label">People progressed into senior roles</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <h2>Work Samples</h2>
+
+    <div class="work-sample">
+      <h3>RFM Customer Segmentation Dashboard</h3>
+      <p>Built in Looker Studio using fabricated data. RFM (Recency, Frequency, Monetary) modelling to prioritise accounts by purchase behaviour — the same approach I used at Wiser to identify high-value clients and drive annual repricing strategy.</p>
+      <div class="embed-wrapper">
+        <iframe src="https://datastudio.google.com/embed/reporting/994b4771-28c5-43a6-a104-667c5b6892f3/page/Ie70F"
+          allowfullscreen
+          sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
+        </iframe>
       </div>
     </div>
   </section>
