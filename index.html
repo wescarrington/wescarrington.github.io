@@ -40,6 +40,22 @@ max-width: var(--max);
 margin: 0 auto;
 }
 
+.header-top {
+display: flex;
+align-items: flex-start;
+gap: 32px;
+}
+
+.headshot {
+width: 110px;
+height: 110px;
+border-radius: 50%;
+object-fit: cover;
+object-position: center top;
+flex-shrink: 0;
+border: 3px solid var(--rule);
+}
+
 header h1 {
 font-size: 2.4rem;
 font-weight: 700;
@@ -292,6 +308,8 @@ color: var(--faint);
 
 @media (max-width: 600px) {
 header h1 { font-size: 1.8rem; }
+.header-top { flex-direction: column; align-items: center; text-align: center; }
+.contact-row { justify-content: center; }
 nav ul { gap: 0; overflow-x: auto; }
 nav ul li a { padding: 12px 12px; }
 }
@@ -301,6 +319,9 @@ nav ul li a { padding: 12px 12px; }
 
 <header>
 <div class="header-inner">
+<div class="header-top">
+<img src="headshot.jpg" alt="Wes Carrington" class="headshot" />
+<div>
 <h1>Wes Carrington</h1>
 <div class="contact-row">
 <span>07515 273 610</span>
@@ -310,6 +331,8 @@ nav ul li a { padding: 12px 12px; }
 </div>
 <p class="tagline">Eight years running the commercial and operational engine of a &pound;6m environmental services group with teams in the UK and Vietnam. I own the annual and quarterly OKR framework, run the leadership operating rhythm and build the reporting infrastructure that turns strategy into delivery.</p>
 <a class="cv-download" href="Wes%20Carrington%20Master%20CV.pdf" download="Wes Carrington CV.pdf"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Download CV</a>
+</div>
+</div>
 </div>
 </header>
 
