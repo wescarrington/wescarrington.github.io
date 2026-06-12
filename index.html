@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wes Carrington</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a1a;
+      --mid: #555;
+      --faint: #888;
+      --rule: #e0e0e0;
+      --accent: #1a56a0;
+      --bg: #fafafa;
+      --card: #ffffff;
+      --max: 780px;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: 16px;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      background: var(--card);
+      border-bottom: 1px solid var(--rule);
+      padding: 48px 24px 40px;
+    }
+
+    .header-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--ink);
+    }
+
+    .contact-row {
+      margin-top: 10px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.875rem;
+      color: var(--faint);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 20px;
+    }
+
+    .contact-row a { color: var(--faint); }
+    .contact-row a:hover { color: var(--accent); }
+
+    .tagline {
+      margin-top: 20px;
+      font-size: 1.05rem;
+      color: var(--mid);
+      max-width: 680px;
+      line-height: 1.7;
+    }
+
+    nav {
+      background: var(--card);
+      border-bottom: 1px solid var(--rule);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav ul {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      gap: 0;
+      list-style: none;
+    }
+
+    nav ul li a {
+      display: block;
+      padding: 14px 18px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--faint);
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    nav ul li a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+      text-decoration: none;
+    }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    section { margin-bottom: 56px; }
+
+    section h2 {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--faint);
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .role { margin-bottom: 36px; }
+
+    .role-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .role-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .role-company {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--mid);
+    }
+
+    .role-dates {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.82rem;
+      color: var(--faint);
+      white-space: nowrap;
+    }
+
+    .role ul {
+      margin-top: 14px;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .role ul li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 10px;
+      font-size: 0.94rem;
+      color: var(--mid);
+      line-height: 1.6;
+    }
+
+    .role ul li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--rule);
+    }
+
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .highlight-card {
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 20px;
+    }
+
+    .highlight-card .number {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.1;
+    }
+
+    .highlight-card .label {
+      margin-top: 4px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.8rem;
+      color: var(--faint);
+    }
+
+    .edu-item { margin-bottom: 16px; }
+
+    .edu-item .degree {
+      font-weight: 700;
+      font-size: 0.97rem;
+    }
+
+    .edu-item .institution {
+      font-size: 0.9rem;
+      color: var(--mid);
+    }
+
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tool-tag {
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 5px 12px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.82rem;
+      color: var(--mid);
+    }
+
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 28px 24px;
+      text-align: center;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.8rem;
+      color: var(--faint);
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.8rem; }
+      nav ul { gap: 0; overflow-x: auto; }
+      nav ul li a { padding: 12px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <h1>Wes Carrington</h1>
+    <div class="contact-row">
+      <span>07515 273 610</span>
+      <a href="mailto:wescar@gmail.com">wescar@gmail.com</a>
+      <a href="https://linkedin.com/in/wescar" target="_blank" rel="noopener">linkedin.com/in/wescar</a>
+      <span>Royston, Hertfordshire</span>
+    </div>
+    <p class="tagline">Eight years running the commercial and operational engine of a £6m environmental services group with teams in the UK and Vietnam. I own the annual and quarterly OKR framework, run the leadership operating rhythm and build the reporting infrastructure that turns strategy into delivery.</p>
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#highlights">Highlights</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#tools">Tools</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <section id="highlights">
+    <h2>Career Highlights</h2>
+    <div class="highlights">
+      <div class="highlight-card">
+        <div class="number">£6.2m</div>
+        <div class="label">Group revenue, grown from £5.5m (2023–25)</div>
+      </div>
+      <div class="highlight-card">
+        <div class="number">£2.3m</div>
+        <div class="label">Combined annual revenue across 3 key accounts</div>
+      </div>
+      <div class="highlight-card">
+        <div class="number">£100k</div>
+        <div class="label">Vietnam revenue grown from zero</div>
+      </div>
+      <div class="highlight-card">
+        <div class="number">~$170k</div>
+        <div class="label">Asian Development Bank contracts won</div>
+      </div>
+      <div class="highlight-card">
+        <div class="number">20+ hrs</div>
+        <div class="label">Manual work per week eliminated via AI automation</div>
+      </div>
+      <div class="highlight-card">
+        <div class="number">6</div>
+        <div class="label">People progressed into senior roles</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <div class="role">
+      <div class="role-header">
+        <div>
+          <span class="role-title">Group Business Manager</span>
+          <span class="role-company"> · Wiser Environment</span>
+        </div>
+        <span class="role-dates">Oct 2021 – Present</span>
+      </div>
+      <ul>
+        <li>Drive weekly leadership decisions on resourcing and investment across a £6m group with consolidated OKR, financial, risk and utilisation data from UK and Vietnam, by building and owning the Power BI reporting infrastructure end-to-end.</li>
+        <li>Govern ~£3m in annual operating costs through the annual and quarterly planning cycle across four departments and two countries, by designing and owning the OKR framework and reporting cadence it runs on.</li>
+        <li>Back every major investment decision across the group with written business cases and board-ready analysis; chair the senior leadership operating rhythm as the CEO's strategic partner.</li>
+        <li>Unlocked a £30/hr margin differential per Senior Consultant — Vietnam at £47 vs UK at £17 — by building a role-level cost model mapping true employment cost, billable rate and utilisation across 12 staff categories.</li>
+        <li>Progressed six people from admin, operative and junior roles into BDMs, compliance leads and a head of department by designing the development pathway and chairing quarterly performance reviews.</li>
+        <li>Eliminated 20+ hours of manual invoice entry per week, reducing a full-time role to part-time, by building the AI automation workflow and governance framework after identifying the opportunity in a finance review.</li>
+        <li>Grew Wiser's Vietnam operation from zero to £100k revenue by leading the market analysis, building the operating model and hiring locally, running the full expansion as a cross-functional programme from the UK.</li>
+        <li>Won three Asian Development Bank contracts worth ~$170k, one published as a named ADB deliverable in 2026, by setting pricing, scoping delivery and directing the tender response strategy for each.</li>
+        <li>Grew three strategic key accounts to ~£2.3m in combined annual revenue: more than doubled Valpak to £1.75m after stepping in as emergency cover in 2023, grew Wastepack 104% to £298k and RECOLIGHT 36% to £185k.</li>
+        <li>Grew group revenue from £5.5m to £6.2m (2023–25), beating the £6m plan, by rebuilding the rate card with YOY price increases averaging 120%, introducing specialist service rates and building an RFM model.</li>
+        <li>Won competitive tenders from Bedford Borough Council (£100k+), Buckinghamshire Council (£50k), South Cambridgeshire District Council and ERP UK Ltd (grown to £30k/month).</li>
+        <li>Opened a new revenue line selling Wiser's reporting infrastructure to clients; first deliverable was Power BI dashboards evidencing ISO 14001 and ISO 50001 compliance within a £142k Intercontinental Exchange account.</li>
+        <li>Selected as subject-matter expert for the UKRI RiSC+ programme on electrical recycling and UK critical minerals strategy.</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-header">
+        <div>
+          <span class="role-title">Communications Manager</span>
+          <span class="role-company"> · Wiser Environment</span>
+        </div>
+        <span class="role-dates">Sep 2020 – Oct 2021</span>
+      </div>
+      <ul>
+        <li>Rebranded the Wiser Group across both businesses under a unified identity and visual language, securing grant funding to offset the cost.</li>
+        <li>Grew organic traffic from 3,596 to 21,452 and combined web traffic from 6,434 to 68,360 (2021–25) by rebuilding the website and SEO strategy from scratch.</li>
+        <li>Won and delivered a consumer booking platform for Bradford Metropolitan District Council, now processing 200 transactions and £4,000/month in place of their kerbside collection system.</li>
+        <li>Returned £67,068 on £13,500 of spend with a PPC campaign for fluorescent tube recycling, designed and run within the £150k+ marketing budget I managed across the function.</li>
+        <li>Replaced Excel-based order management with a HubSpot CRM built from scratch, evaluated against Salesforce and configured end-to-end.</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-header">
+        <div>
+          <span class="role-title">Environmental Consultant</span>
+          <span class="role-company"> · Wiser Environment</span>
+        </div>
+        <span class="role-dates">Apr 2018 – Sep 2020</span>
+      </div>
+      <ul>
+        <li>Grew candidate numbers on Wiser's CIWM-accredited waste-site management training programme tenfold, from 20 to 200 per year, by redesigning delivery planning and capacity.</li>
+        <li>Kept client operations permitted and compliant, from SMEs to large producers, by running their environmental compliance programmes and working directly with the Environment Agency, HSE and local authorities.</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-header">
+        <div>
+          <span class="role-title">Research Assistant</span>
+          <span class="role-company"> · Papworth Trust (Volunteering)</span>
+        </div>
+        <span class="role-dates">Dec 2014 – Jun 2015</span>
+      </div>
+      <ul>
+        <li>Shaped recommendations to the Office of Rail Regulation on franchise KPIs and open data by analysing accessibility survey data from 799 disabled rail passengers, building the case that targeting 255 stations would make two thirds of journeys accessible.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education &amp; Qualifications</h2>
+
+    <div class="edu-item">
+      <div class="degree">BSc Business Management — 1st Class Honours &amp; Valedictorian</div>
+      <div class="institution">Anglia Ruskin University, 2014–2017</div>
+    </div>
+    <div class="edu-item">
+      <div class="degree">CMI Level 5 Certificate in Business Management</div>
+      <div class="institution">Chartered Management Institute, 2017</div>
+    </div>
+    <div class="edu-item">
+      <div class="degree">CMI 'Future Leader' Award</div>
+      <div class="institution">Chartered Management Institute, 2017</div>
+    </div>
+  </section>
+
+  <section id="tools">
+    <h2>Tools &amp; Systems</h2>
+    <div class="tools-list">
+      <span class="tool-tag">Power BI</span>
+      <span class="tool-tag">HubSpot</span>
+      <span class="tool-tag">Asana</span>
+      <span class="tool-tag">Google Analytics</span>
+      <span class="tool-tag">Harvest</span>
+      <span class="tool-tag">Advanced Excel</span>
+      <span class="tool-tag">Claude (AI)</span>
+      <span class="tool-tag">ChatGPT</span>
+      <span class="tool-tag">OKR frameworks</span>
+      <span class="tool-tag">Business intelligence</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Wes Carrington · wescar@gmail.com · <a href="https://linkedin.com/in/wescar">LinkedIn</a>
+</footer>
+
+</body>
+</html>
