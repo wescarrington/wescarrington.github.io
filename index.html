@@ -39,6 +39,28 @@
     .header-inner {
       max-width: var(--max);
       margin: 0 auto;
+      display: flex;
+      align-items: flex-start;
+      gap: 32px;
+    }
+
+    .header-photo {
+      flex-shrink: 0;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 2px solid var(--rule);
+    }
+
+    .header-text {
+      flex: 1;
+    }
+
+    @media (max-width: 480px) {
+      .header-inner { flex-direction: column; gap: 16px; }
+      .header-photo { width: 72px; height: 72px; }
     }
 
     header h1 {
@@ -324,6 +346,8 @@
 
 <header>
   <div class="header-inner">
+    <img src="headshot.jpg" alt="Wes Carrington" class="header-photo" />
+    <div class="header-text">
     <h1>Wes Carrington</h1>
     <div class="contact-row">
       <span>07515 273 610</span>
@@ -332,6 +356,7 @@
       <span>Royston, Hertfordshire</span>
     </div>
     <p class="tagline">Eight years running the commercial and operational engine of a £6m environmental services group with teams in the UK and Vietnam. I own the annual and quarterly OKR framework, run the leadership operating rhythm and build the reporting infrastructure that turns strategy into delivery.</p>
+    </div>
   </div>
 </header>
 
